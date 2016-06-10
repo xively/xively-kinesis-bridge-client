@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "main": "dist/index.js",
+  "author": "Adam Recsko <adam.recsko@logmein.com>",
   "scripts": {
     "pre-commit": "gulp pre-commit",
     "pre-release": "gulp pre-release",

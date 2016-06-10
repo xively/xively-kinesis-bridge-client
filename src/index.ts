@@ -20,11 +20,3 @@ function parseData(base64Data: string): KinesisBridgeEnvelope {
     envelope.contentBody = reader.readBuffer(envelope.contentLength);
     return envelope;
 }
-
-/*
-exports.handler = function (event, context, done) {
-    let messages = event.Records && event.Records.map((event) => parseData(event.kinesis.data));
-    console.log(JSON.stringify(messages, null, '  '));
-    done(null, 'KINESIS LOGGED');
-};
-*
