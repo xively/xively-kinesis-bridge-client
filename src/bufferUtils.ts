@@ -27,7 +27,7 @@ bufferProto.readIntLE = bufferProto.readIntLE || readIntLE;
  * @param buffer
  * @constructor
  */
-class BufferReader {
+export class BufferReader {
     private offset: number = 0;
 
     constructor(private buffer: Buffer) {
@@ -59,8 +59,7 @@ class BufferReader {
         this.offset += size;
         return num;
     };
-
-
+    
     /**
      * Read size of data to a buffer from internal buffer
      * @param size
@@ -91,7 +90,7 @@ export class BufferWriter {
     private offset: number = 0;
 
     constructor(private buffer: Buffer) {
-    }
+    };
 
     /**
      * Write  int to buffer in Big-endian order
@@ -101,7 +100,7 @@ export class BufferWriter {
     public writeIntLE(data: any, size: number) {
         this.buffer.writeIntLE(data, this.offset, size);
         this.offset += size;
-    }
+    };
 
 
     public writeMultibyteNumLE(data: any, size: number) {
@@ -123,7 +122,7 @@ export class BufferWriter {
      * @param data
      * @param size
      */
-    writeString(data: any, size: number) {
+    public writeString(data: any, size: number) {
         this.buffer.write(data, this.offset, size, 'utf8');
         this.offset += size;
     };
@@ -133,7 +132,7 @@ export class BufferWriter {
      * @param srcBuffer
      * @param size
      */
-    copyFrom(srcBuffer: Buffer, size: number) {
+    public copyFrom(srcBuffer: Buffer, size: number) {
         srcBuffer.copy(this.buffer, this.offset);
         this.offset += size;
     };
@@ -142,13 +141,8 @@ export class BufferWriter {
      * Get back internal buffer
      * @returns {*}
      */
-    getBuffer(): Buffer {
+    public getBuffer(): Buffer {
         return this.buffer;
     };
 
 }
-
-module.exports = {
-    BufferReader: BufferReader,
-    BufferWriter: BufferWriter
-};

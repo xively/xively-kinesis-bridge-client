@@ -10,7 +10,8 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "babel-runtime": "^6.9.2"
+    "babel-runtime": "^6.9.2",
+    "uuid": "^2.0.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",

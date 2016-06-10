@@ -5,6 +5,7 @@
     "mocha": "registry:dt/mocha#2.2.5+20160317120654",
     "node": "registry:dt/node#6.0.0+20160608110640",
     "sinon": "registry:dt/sinon#1.16.0+20160517064723",
-    "sinon-chai": "registry:dt/sinon-chai#2.7.0+20160317120654"
+    "sinon-chai": "registry:dt/sinon-chai#2.7.0+20160317120654",
+    "uuid": "registry:dt/uuid#3.3.0+20160316155526"
   }
 }
