@@ -5,7 +5,7 @@ export class KinesisBridgeEnvelope {
     public sourceName: string;
     public sourcePropertiesLength: number;
     public sourceProperties: any;
-    public sourceNameLength: number;
+    public targetNameLength: number;
     public targetName: string;
     public targetPropertiesLength: number;
     public targetProperties: any;

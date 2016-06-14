@@ -20,7 +20,7 @@ describe('KinesisEnvelopeParser', () => {
         expect(kinesisBridgeEnvelope).to.be.an.instanceof(KinesisBridgeEnvelope);
         expect(kinesisBridgeEnvelope.headerVersion).to.equal(1);
         expect(kinesisBridgeEnvelope.timeUUID).to.equal('c64768f0-2623-e611-81a4-0e3b241d74e9');
-        expect(kinesisBridgeEnvelope.sourceNameLength).to.equal(94);
+        expect(kinesisBridgeEnvelope.sourceNameLength).to.equal(36);
         expect(kinesisBridgeEnvelope.sourceName).to.equal('e5d428b1-0e7f-4dbc-a1de-58bf69caee54');
         expect(kinesisBridgeEnvelope.sourcePropertiesLength).to.equal(203);
         expect(kinesisBridgeEnvelope.sourceProperties).to.deep.equal({
@@ -30,6 +30,7 @@ describe('KinesisEnvelopeParser', () => {
             TemplateId: '65b3ce54-1021-45ca-bd02-030864d5c652',
             AccountId: 'aa825c4d-eab6-4f72-8186-46f4bbf81b5f'
         });
+        expect(kinesisBridgeEnvelope.targetNameLength).to.equal(94);
         expect(kinesisBridgeEnvelope.targetName).to.equal('xi/blue/v1/aa825c4d-eab6-4f72-8186-46f4bbf81b5f/d/e5d428b1-0e7f-4dbc-a1de-58bf69caee54/generic');
         expect(kinesisBridgeEnvelope.targetPropertiesLength).to.equal(128);
         expect(kinesisBridgeEnvelope.targetProperties).to.deep.equal({
