@@ -1,5 +1,7 @@
 # xively-kinesis-bridge
 
+[![Build Status](https://travis-ci.org/xively/xively-kinesis-bridge-client.svg?branch=master)](https://travis-ci.org/xively/xively-kinesis-bridge-client)
+
 ## Xively Kinesis Bridge Client Library
 
 This is a NodeJS client library written in TypeScript for the Xively Kinesis Bridge feature. It helps parsing the envelope transported on the Xively-connected Amazon Kinesis stream.
