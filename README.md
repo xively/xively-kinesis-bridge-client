@@ -9,3 +9,14 @@ This is a NodeJS client library written in TypeScript for the Xively Kinesis Bri
 ```
 npm install xively-kinesis-bridge-client
 ```
+
+### Sample
+
+```javascript
+import {KinesisBridgeEnvelopeParser} from 'xively-kinesis-bridge-client';
+
+const base64Data = 'some base64 encoded string';
+const parser = new KinesisBridgeEnvelopeParser();
+
+const kinesisBridgeEnvelope : KinesisBridgeEnvelope = parser.parseData(base64Data);
+```
