@@ -1,7 +1,9 @@
-import {BufferReader} from  './bufferUtils';
-import {FIREHOSE_ENVELOPE} from './envelopeStructure';
-import uuid from 'uuid';
-import {KinesisBridgeEnvelope} from './KinesisBridgeEnvelope';
+/// <reference path="../typings/index.d.ts"/>
+
+import {BufferReader} from  './buffer-utils';
+import {FIREHOSE_ENVELOPE} from './envelope-structure';
+import * as uuid from 'node-uuid';
+import {KinesisBridgeEnvelope} from './kinesis-bridge-envelope';
 
 export class KinesisBridgeEnvelopeParser {
 

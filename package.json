@@ -8,17 +8,19 @@
     "pre-commit": "gulp pre-commit",
     "pre-release": "gulp pre-release",
     "start": "gulp",
-    "test": "gulp test"
+    "test": "gulp test",
+    "postinstall": "typings install"
   },
   "dependencies": {
     "babel-runtime": "^6.9.2",
-    "uuid": "^2.0.2"
+    "node-uuid": "^1.4.7"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "gulp": "3.9.1",
     "sinon": "^1.17.4",
     "sinon-chai": "^2.8.0",
+    "typings": "^1.1.0",
     "urbanjs-tools": "^0.8.5-beta"
   },
   "typings": "dist/index.d.ts"

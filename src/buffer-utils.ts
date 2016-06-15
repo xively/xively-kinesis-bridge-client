@@ -1,5 +1,7 @@
 const bufferProto = Buffer.prototype;
-function writeIntLE(data: any, offset: number, size: number): number {
+
+/* tslint:disable:no-invalid-this */
+function writeIntLE(data: number, offset: number, size: number): number {
     if (size === 1) {
         return this.writeInt8(data, offset);
     }
@@ -18,6 +20,7 @@ function readIntLE(offset: number, size: number): number {
     }
     throw new Error('Size not supported in this polyfill, Buffer.readIntLE:' + size);
 }
+/* tslint:enable:no-invalid-this */
 
 bufferProto.writeIntLE = bufferProto.writeIntLE || writeIntLE;
 bufferProto.readIntLE = bufferProto.readIntLE || readIntLE;
@@ -28,9 +31,11 @@ bufferProto.readIntLE = bufferProto.readIntLE || readIntLE;
  * @constructor
  */
 export class BufferReader {
+    private buffer: Buffer;
     private offset: number = 0;
 
-    constructor(private buffer: Buffer) {
+    constructor(buffer: Buffer) {
+        this.buffer = buffer;
     }
 
     /**
@@ -54,12 +59,12 @@ export class BufferReader {
                 num = this.buffer.readUInt32LE(this.offset);
                 break;
             default:
-                throw new Error(size + " is not supported as multibyte number");
+                throw new Error(size + ' is not supported as multibyte number');
         }
         this.offset += size;
         return num;
     };
-    
+
     /**
      * Read size of data to a buffer from internal buffer
      * @param size
@@ -87,9 +92,11 @@ export class BufferReader {
  * @constructor
  */
 export class BufferWriter {
+    private buffer: Buffer;
     private offset: number = 0;
 
-    constructor(private buffer: Buffer) {
+    constructor(buffer: Buffer) {
+        this.buffer = buffer;
     };
 
     /**
@@ -97,13 +104,12 @@ export class BufferWriter {
      * @param data
      * @param size
      */
-    public writeIntLE(data: any, size: number) {
+    public writeIntLE(data: number, size: number) {
         this.buffer.writeIntLE(data, this.offset, size);
         this.offset += size;
     };
 
-
-    public writeMultibyteNumLE(data: any, size: number) {
+    public writeMultibyteNumLE(data: number, size: number) {
         switch (size) {
             case 2:
                 this.buffer.writeUInt16LE(data, this.offset);
@@ -112,7 +118,7 @@ export class BufferWriter {
                 this.buffer.writeUInt32LE(data, this.offset);
                 break;
             default:
-                throw new Error(size + " is not supported as multibyte number");
+                throw new Error(size + ' is not supported as multibyte number');
         }
         this.offset += size;
     };
@@ -122,7 +128,7 @@ export class BufferWriter {
      * @param data
      * @param size
      */
-    public writeString(data: any, size: number) {
+    public writeString(data: string, size: number) {
         this.buffer.write(data, this.offset, size, 'utf8');
         this.offset += size;
     };

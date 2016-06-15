@@ -1,8 +1,9 @@
-'use strict';
 import chai from 'chai';
+// tslint:disable:import-name
 import sinonChai from 'sinon-chai';
+// tslint:enable:import-name
 import {KinesisBridgeEnvelopeParser} from '../index';
-import {KinesisBridgeEnvelope} from "../KinesisBridgeEnvelope";
+import {KinesisBridgeEnvelope} from '../kinesis-bridge-envelope';
 const expect = chai.expect;
 chai.use(sinonChai);
 
@@ -11,9 +12,21 @@ describe('KinesisEnvelopeParser', () => {
         const parser = new KinesisBridgeEnvelopeParser();
         expect(parser.parseData).to.be.a.function;
     });
-    
+
     it('should return a parsed kinesis bridge envelope when called with valid payload', () => {
-        const payload = 'AcZHaPAmI+YRgaQOOyQddOkkAGU1ZDQyOGIxLTBlN2YtNGRiYy1hMWRlLTU4YmY2OWNhZWU1NMsAeyJTY2hlbWFWZXJzaW9uIjoxLCJFbnRpdHlUeXBlIjoiZGV2aWNlIiwiT3JnYW5pemF0aW9uSWRzIjpbImE1ZTM5MjJkLTU0ZWItNDlhOC04MmY4LTNlYTVhNTU2ZGVhMyJdLCJUZW1wbGF0ZUlkIjoiNjViM2NlNTQtMTAyMS00NWNhLWJkMDItMDMwODY0ZDVjNjUyIiwiQWNjb3VudElkIjoiYWE4MjVjNGQtZWFiNi00ZjcyLTgxODYtNDZmNGJiZjgxYjVmIn1eAHhpL2JsdWUvdjEvYWE4MjVjNGQtZWFiNi00ZjcyLTgxODYtNDZmNGJiZjgxYjVmL2QvZTVkNDI4YjEtMGU3Zi00ZGJjLWExZGUtNThiZjY5Y2FlZTU0L2dlbmVyaWOAAHsiU2NoZW1hVmVyc2lvbiI6MSwiRW50aXR5VHlwZSI6InRvcGljIiwiVG9waWNPd25lciI6eyJFbnRpdHlUeXBlIjoiZGV2aWNlIiwiQWNjb3VudElkIjoiYWE4MjVjNGQtZWFiNi00ZjcyLTgxODYtNDZmNGJiZjgxYjVmIn19UQEAAHsiYWNjb3VudElkIjoiYWE4MjVjNGQtZWFiNi00ZjcyLTgxODYtNDZmNGJiZjgxYjVmIiwic291cmNlVGltZXN0YW1wIjoxNDY0MjU2MDgyOTE3LCJzb3VyY2VJZCI6ImU1ZDQyOGIxLTBlN2YtNGRiYy1hMWRlLTU4YmY2OWNhZWU1NCIsImNvZGUiOjIwMCwibWVzc2FnZSI6InNmYWZzYWZzYVd1ZiB1YmlqZSBrb2Z1c2luIHNhd25pbCBuaSBlZnUgYnViemVzdG90IHJvem5lIGluaXBvZmhhaiBsYWZpcnV0IGppbHV2ZXZhIHB1dG9ndWRpIGZham9ndW4gb2J1IGVnbG93by4iLCJkZXRhaWxzIjoiVGVzdCIsInNldmVyaXR5IjoiaW5mb3JtYXRpb25hbCIsInRhZ3MiOlsibWFsZnVuY3Rpb24iXX0=';
+        const payload = 'AcZHaPAmI+YRgaQOOyQddOkkAGU1ZDQyOGIxLTBlN2YtNGRiYy1hMWRlLTU4YmY2OWNhZWU1NM' +
+            'sAeyJTY2hlbWFWZXJzaW9uIjoxLCJFbnRpdHlUeXBlIjoiZGV2aWNlIiwiT3JnYW5pemF0aW9uSWRzIjpbImE1' +
+            'ZTM5MjJkLTU0ZWItNDlhOC04MmY4LTNlYTVhNTU2ZGVhMyJdLCJUZW1wbGF0ZUlkIjoiNjViM2NlNTQtMTAyMS' +
+            '00NWNhLWJkMDItMDMwODY0ZDVjNjUyIiwiQWNjb3VudElkIjoiYWE4MjVjNGQtZWFiNi00ZjcyLTgxODYtNDZm' +
+            'NGJiZjgxYjVmIn1eAHhpL2JsdWUvdjEvYWE4MjVjNGQtZWFiNi00ZjcyLTgxODYtNDZmNGJiZjgxYjVmL2QvZT' +
+            'VkNDI4YjEtMGU3Zi00ZGJjLWExZGUtNThiZjY5Y2FlZTU0L2dlbmVyaWOAAHsiU2NoZW1hVmVyc2lvbiI6MSwi' +
+            'RW50aXR5VHlwZSI6InRvcGljIiwiVG9waWNPd25lciI6eyJFbnRpdHlUeXBlIjoiZGV2aWNlIiwiQWNjb3VudE' +
+            'lkIjoiYWE4MjVjNGQtZWFiNi00ZjcyLTgxODYtNDZmNGJiZjgxYjVmIn19UQEAAHsiYWNjb3VudElkIjoiYWE4' +
+            'MjVjNGQtZWFiNi00ZjcyLTgxODYtNDZmNGJiZjgxYjVmIiwic291cmNlVGltZXN0YW1wIjoxNDY0MjU2MDgyOT' +
+            'E3LCJzb3VyY2VJZCI6ImU1ZDQyOGIxLTBlN2YtNGRiYy1hMWRlLTU4YmY2OWNhZWU1NCIsImNvZGUiOjIwMCwi' +
+            'bWVzc2FnZSI6InNmYWZzYWZzYVd1ZiB1YmlqZSBrb2Z1c2luIHNhd25pbCBuaSBlZnUgYnViemVzdG90IHJvem' +
+            '5lIGluaXBvZmhhaiBsYWZpcnV0IGppbHV2ZXZhIHB1dG9ndWRpIGZham9ndW4gb2J1IGVnbG93by4iLCJkZXRh' +
+            'aWxzIjoiVGVzdCIsInNldmVyaXR5IjoiaW5mb3JtYXRpb25hbCIsInRhZ3MiOlsibWFsZnVuY3Rpb24iXX0=';
         const parser = new KinesisBridgeEnvelopeParser();
         const kinesisBridgeEnvelope : KinesisBridgeEnvelope = parser.parseData(payload);
 
@@ -31,7 +44,8 @@ describe('KinesisEnvelopeParser', () => {
             AccountId: 'aa825c4d-eab6-4f72-8186-46f4bbf81b5f'
         });
         expect(kinesisBridgeEnvelope.targetNameLength).to.equal(94);
-        expect(kinesisBridgeEnvelope.targetName).to.equal('xi/blue/v1/aa825c4d-eab6-4f72-8186-46f4bbf81b5f/d/e5d428b1-0e7f-4dbc-a1de-58bf69caee54/generic');
+        expect(kinesisBridgeEnvelope.targetName)
+            .to.equal('xi/blue/v1/aa825c4d-eab6-4f72-8186-46f4bbf81b5f/d/e5d428b1-0e7f-4dbc-a1de-58bf69caee54/generic');
         expect(kinesisBridgeEnvelope.targetPropertiesLength).to.equal(128);
         expect(kinesisBridgeEnvelope.targetProperties).to.deep.equal({
             SchemaVersion: 1,
@@ -54,7 +68,6 @@ describe('KinesisEnvelopeParser', () => {
             severity: 'informational',
             tags: [ 'malfunction' ]
         });
-        
     });
 
     it('should throw an exception when called with null payload', () => {
