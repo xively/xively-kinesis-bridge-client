@@ -8,7 +8,25 @@ node_js:
 install:
   # Disable the spinner, it looks bad on Travis
   - npm config set spin false
+
   # Install npm dependencies
   - npm install
 
+  # Install typings
+  - npm install -g typings
+  - typings install
+
 script: npm run pre-release
+
+before_deploy:
+  - ./node_modules/.bin/patch-version
+
+deploy:
+  provider: npm
+  skip_cleanup: true
+  email: xively-devops@logmein.com
+  api_key:
+    secure: XEZCtXzcOhhb77Xr0/tIesqoN4w/03weOj18PV7TGJZFlvwWWhKG6DzWyXHtIJLsR451S7sfo36ry54eKxP0BrMqPRjTmkBLQCUoR8XwgGyUZBH+ZLy8h38TGrxITUhtYOqd+7c7e4FBx8dsqtnejgORCf1gdHnYJJUEQi+1lvILjFsBbTjgOxMy1LRLn3xgpLYBHhKjw/oLsbGGIEad7U4B/lw1Jar4c9jvs5lR5kqD+QDIkqRN5MYLUMSmfp4kq4A4hsu15StLcom6pB0EJ39ETaEYbK/DxqDxrOrHjDxbXfgdjauUd+Oc4zFB7P7K/pTXwOj2r6EdT7LnWT1yr1bbZE9uqH3AhH4sbi2Di2QaISaVzWDMpa8UDOtny5b/rh3KA0aPyHoexAD6GzwET9ClBN0m1Kfe5uiXPeJsYMEK5L6OKaBTrdXIMWsew8NKm6AjfMi+laWJvM5lIIRJCJOzvqoK9Pya2sTWJRHNW+CMatftSUA/BWAADUc5ogxzNWrfKsqkujHDkwJg6AA4PPh2zpWvNEFcj4KgIqeFStvLykP17IrsOqEGkq+rUFqVrfMpjYw5rWbB2dJlslxR11V4yvR2sla6iMpB50MRKqWS+4CdgE6RYGF7JS08dIWJYyqyp6N7yCR5OyQp6nNmMjcx9urct3JIr39A+s4lTxE=
+  on:
+    branch: master
+    tags: true
