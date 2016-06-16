@@ -18,3 +18,12 @@ docs
 # Source folder
 src/**/__tests__
 src/test
+
+# config files
+typings.json
+.gitattributes
+.editorconfig
+.travis.yml
+.retireignore
+gulpfile.js
+.npmignore

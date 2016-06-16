@@ -1,20 +1,18 @@
 {
   "name": "xively-kinesis-bridge",
-  "version": "0.1.0",
-  "private": false,
+  "version": "0.0.1",
   "main": "dist/index.js",
-  "author": "Adam Recsko <adam.recsko@logmein.com>",
-  "license" : "BSD-3-Clause",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/xively/xively-kinesis-bridge-client"
+  "author": "Xively-Sales-Fury <Xively-Sales-Fury@logmein.com>",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xively/xively-kinesis-bridge-client"
   },
   "scripts": {
     "pre-commit": "gulp pre-commit",
     "pre-release": "gulp pre-release",
     "start": "gulp",
-    "test": "gulp test",
-    "postinstall": "typings install"
+    "test": "gulp test"
   },
   "dependencies": {
     "babel-runtime": "^6.9.2",
@@ -25,7 +23,7 @@
     "gulp": "3.9.1",
     "sinon": "^1.17.4",
     "sinon-chai": "^2.8.0",
-    "typings": "^1.1.0",
+    "patch-version": "^0.1.1",
     "urbanjs-tools": "^0.8.5-beta"
   },
   "typings": "dist/index.d.ts"
