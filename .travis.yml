@@ -12,3 +12,14 @@ install:
   - npm install
 
 script: npm run pre-release
+
+before-deploy:
+  - ./node_modules/.bin/patch-version
+
+deploy:
+  provider: npm
+  api_key:
+    secure: ""
+  on:
+    branch: master
+    tags: true
