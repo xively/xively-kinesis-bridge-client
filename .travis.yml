@@ -12,3 +12,14 @@ install:
   - npm install
 
 script: npm run pre-release
+
+before-deploy:
+  - ./node_modules/.bin/patch-version
+
+deploy:
+  provider: npm
+  api_key:
+    secure: "ZLOd5k+ffwcVMRY1VtdzQlreUtsd3XMBrZ/Dl/y5L3Un0mVprfLlz7AQIon+UR6Y0v/wvQlavbZf1zHQ9IweBMNWrSx0ViZydnpphGvaneELlRsN4GLVgviZaTp8CFQPG9VOvft5A7xEJlbC59veN3HSqWZXkkTZquZ7P4uULsS5hoDPV5R9ZRsSLlKISRoU6YnyD19r8+6Z+fs43HXKyJyYApfd0Q64CT/McRsJzvKvPLbkieY7Nr942qXmEeD5RmHijGDRLr4sqwO/q+Eez09Ra1ZaPXjimCzPspp9e5LFkC1edwPA5CU3Zg+0WP8WnNirwGQBqgjWesMaFjtl4h9s6elFcDsUiuXFMBsmD9GendfbIDwjlO/voZ2PU6j4zC38V5BKE/kH/wUvUoBuUFYf+bnUTofcahhNJq7CIqZ3RowLXy5rM5fzF37R3/YEHQuDgzMRtKvplepGLH2v+ORH+pwS4RVTnBKlsL2OV/Waj75pDam4BbImvi0mQo7I19nE8SFqnhT5UG1GuFm5DdhcezP8rRTWipPJilhL5jB3OQQ1IOkb/+uQwy6skAX9Vmk0xErU9iHoiURbgkjYjb5poiB4Z0KfvgCrrS17rIPlA1e7j+4JO9bNERRoe3k6WOOZTocqWeTgrJDxYoLhW1We3/GxULZHM6fwhF3oOzw="
+  on:
+    branch: master
+    tags: true
