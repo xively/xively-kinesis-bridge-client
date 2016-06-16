@@ -1,5 +1,4 @@
 # xively-kinesis-bridge
-
 [![Build Status](https://travis-ci.org/xively/xively-kinesis-bridge-client.svg?branch=master)](https://travis-ci.org/xively/xively-kinesis-bridge-client)
 
 ## Xively Kinesis Bridge Client Library
