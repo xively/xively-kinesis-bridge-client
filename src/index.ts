@@ -20,7 +20,13 @@ export class KinesisBridgeEnvelopeParser {
         envelope.sourceNameLength = reader.readMultibyteNumLE(FIREHOSE_ENVELOPE.SOURCE_NAME_LENGTH);
         envelope.sourceName = reader.readString(envelope.sourceNameLength);
         envelope.sourcePropertiesLength = reader.readMultibyteNumLE(FIREHOSE_ENVELOPE.SOURCE_PROPERTIES_LENGTH);
-        envelope.sourceProperties = JSON.parse(reader.readString(envelope.sourcePropertiesLength));
+        const serializedSourceProperties = reader.readString(envelope.sourcePropertiesLength);
+        if (serializedSourceProperties.length > 0) {
+            envelope.sourceProperties = JSON.parse(serializedSourceProperties);
+        } else {
+            envelope.sourceProperties = {};
+        }
+
         envelope.targetNameLength = reader.readMultibyteNumLE(FIREHOSE_ENVELOPE.TARGET_NAME_LENGTH);
         envelope.targetName = reader.readString(envelope.targetNameLength);
         envelope.targetPropertiesLength = reader.readMultibyteNumLE(FIREHOSE_ENVELOPE.TARGET_PROPERTIES_LENGTH);
