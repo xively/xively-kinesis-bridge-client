@@ -9,7 +9,7 @@ This is a NodeJS client library written in TypeScript for the Xively Kinesis Bri
 ## Quickstart
 
 ```
-npm install xively-kinesis-bridge-client
+npm install xively-kinesis-bridge
 ```
 
 ### Sample
