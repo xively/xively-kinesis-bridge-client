@@ -22,7 +22,7 @@ export class KinesisBridgeEnvelopeParser {
         envelope.sourcePropertiesLength = reader.readMultibyteNumLE(FIREHOSE_ENVELOPE.SOURCE_PROPERTIES_LENGTH);
         const serializedSourceProperties = reader.readString(envelope.sourcePropertiesLength);
         if (serializedSourceProperties.length > 0) {
-            envelope.sourceProperties = JSON.parse(reader.readString(envelope.sourcePropertiesLength));
+            envelope.sourceProperties = JSON.parse(serializedSourceProperties);
         } else {
             envelope.sourceProperties = {};
         }
