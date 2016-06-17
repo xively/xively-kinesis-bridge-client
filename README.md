@@ -15,7 +15,7 @@ npm install xively-kinesis-bridge
 ### Sample
 
 ```javascript
-import {KinesisBridgeEnvelopeParser} from 'xively-kinesis-bridge-client';
+import {KinesisBridgeEnvelopeParser} from 'xively-kinesis-bridge';
 
 const base64Data = 'some base64 encoded string';
 const parser = new KinesisBridgeEnvelopeParser();
