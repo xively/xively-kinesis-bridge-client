@@ -8,6 +8,6 @@
     "sinon-chai": "registry:dt/sinon-chai#2.7.0+20160317120654"
   },
   "dependencies": {
-    "node-uuid": "registry:npm/node-uuid#1.4.7+20160503013124"
+    "uuid": "registry:npm/uuid#1.4.7+20160503013124"
   }
 }
