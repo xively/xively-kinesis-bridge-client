@@ -2,7 +2,7 @@
 
 import {BufferReader} from  './buffer-utils';
 import {FIREHOSE_ENVELOPE} from './envelope-structure';
-import * as uuid from 'node-uuid';
+import * as uuid from 'uuid';
 import {KinesisBridgeEnvelope} from './kinesis-bridge-envelope';
 
 export class KinesisBridgeEnvelopeParser {
