@@ -45,7 +45,6 @@ export class KinesisBridgeEnvelopeParser {
         return envelope;
     }
 
-
     public encodeData(envelope: KinesisBridgeEnvelope): string {
         const data = {
             sourceName: envelope.sourceName,
@@ -56,33 +55,29 @@ export class KinesisBridgeEnvelopeParser {
         };
 
         // Loops through object and returns int of all values summed
-        const lengthSize = Object.keys(FIREHOSE_ENVELOPE).reduce(
-            (acc, current) => (acc + FIREHOSE_ENVELOPE[current])
-        , 0);
+        const lengthSize = Object.keys(FIREHOSE_ENVELOPE).reduce((acc, current) => (acc + FIREHOSE_ENVELOPE[current]), 0);
 
         // Loops through object and returns int of all value string lengths summed
-        const dataValuesSize = Object.keys(data).reduce(
-            (acc, current) => (acc + (data[current] === '{}' ? 0 : data[current].length))
-        , 0);
+        const dataValuesSize = Object.keys(data).reduce((acc, current) => (acc + (data[current] === '{}' ? 0 : data[current].length)) , 0);
 
         // Creates buffer of the correct length
         const nodeBuffer = Buffer.alloc(lengthSize + dataValuesSize);
         const buffer = new BufferWriter(nodeBuffer);
 
         // Wrapper function to write strings to buffer
-        const writeString = (string) => {
-            buffer.writeMultibyteNumLE(string.length, 2);
-            buffer.writeString(string, string.length);
-        }
+        const writeString = (str) => {
+            buffer.writeMultibyteNumLE(str.length, 2);
+            buffer.writeString(str, str.length);
+        };
 
-        const writeJson = (string) => {
-            if(string === "{}"){
+        const writeJson = (str) => {
+            if (str === '{}') {
                 buffer.writeMultibyteNumLE(0, 2);
-            }else{
-                buffer.writeMultibyteNumLE(string.length, 2);
-                buffer.writeString(string, string.length);
+            } else {
+                buffer.writeMultibyteNumLE(str.length, 2);
+                buffer.writeString(str, str.length);
             }
-        }
+        };
 
         buffer.writeIntLE(envelope.headerVersion, FIREHOSE_ENVELOPE.HEADER_VERSION);
 
