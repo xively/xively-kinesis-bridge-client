@@ -10,7 +10,7 @@ tools.initialize(gulp, {
 
   checkFileNames: true,
 
-  jsdoc: true,
+  //jsdoc: true,
 
   nsp: true,
 
