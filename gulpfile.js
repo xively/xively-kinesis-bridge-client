@@ -6,19 +6,19 @@ const tools = require('urbanjs-tools');
 tools.initialize(gulp, {
   babel: true,
 
-  // checkDependencies: true,
+  checkDependencies: true,
 
-  // checkFileNames: true,
+  checkFileNames: true,
 
-  //jsdoc: true,
+  jsdoc: true,
 
-  // nsp: true,
+  nsp: true,
 
-  // mocha: true,
+   mocha: true,
 
-  // retire: true,
+  retire: true,
 
-  // tslint: true
+  tslint: true
 });
 
 

@@ -30,6 +30,6 @@ describe('KinesisEnvelopeEncoder', () => {
         kinesisBridgeEnvelope.contentLength = 7;
         kinesisBridgeEnvelope.contentBody = new Buffer('Testing', 'binary');
 
-        expect('Foo', encoder.encodeData(kinesisBridgeEnvelope));
+        expect('Foo').to.be.eq(encoder.encodeData(kinesisBridgeEnvelope));
     });
 });
