@@ -30,6 +30,11 @@ describe('KinesisEnvelopeEncoder', () => {
         kinesisBridgeEnvelope.contentLength = 7;
         kinesisBridgeEnvelope.contentBody = new Buffer('Testing', 'binary');
 
-        expect('Foo').to.be.eq(encoder.encodeData(kinesisBridgeEnvelope));
+        const payload = 'AcZHaPAmI+YRgaQOOyQddOkCAHt9BAAie30iXgB4aS9ibHVlL3Yx' +
+                        'L2FhODI1YzRkLWVhYjYtNGY3Mi04MTg2LTQ2ZjRiYmY4MWI1Zi9k' +
+                        'L2U1ZDQyOGIxLTBlN2YtNGRiYy1hMWRlLTU4YmY2OWNhZWU1NC9n' +
+                        'ZW5lcmljBAAie30iBwAAAFRlc3Rp';
+
+        expect(payload).to.be.eq(encoder.encodeData(kinesisBridgeEnvelope));
     });
 });
