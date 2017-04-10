@@ -16,6 +16,7 @@ describe('KinesisEnvelopeEncoder', () => {
 
     it('should return an encoded valid payload when called with a valid kinesis bridge envelope', () => {
         const encoder = new KinesisBridgeEnvelopeParser();
+
         const kinesisBridgeEnvelope : KinesisBridgeEnvelope = new KinesisBridgeEnvelope();
         kinesisBridgeEnvelope.headerVersion = 1;
         kinesisBridgeEnvelope.timeUUID = 'c64768f0-2623-e611-81a4-0e3b241d74e9';
@@ -36,5 +37,19 @@ describe('KinesisEnvelopeEncoder', () => {
                         'ZW5lcmljBAAie30iBwAAAFRlc3Rp';
 
         expect(payload).to.be.eq(encoder.encodeData(kinesisBridgeEnvelope));
+
+        const decodedMessage = encoder.parseData(payload);
+
+        expect(kinesisBridgeEnvelope.headerVersion).to.be.eq(decodedMessage.headerVersion);
+        expect(kinesisBridgeEnvelope.timeUUID).to.be.eq(decodedMessage.timeUUID);
+        //expect(kinesisBridgeEnvelope.sourceNameLength).to.be.eq(decodedMessage.sourceNameLength);
+        expect(kinesisBridgeEnvelope.sourceName).to.be.eq(decodedMessage.sourceName);
+        //expect(kinesisBridgeEnvelope.sourcePropertiesLength).to.be.eq(decodedMessage.sourcePropertiesLength);
+        expect(kinesisBridgeEnvelope.sourceProperties).to.be.eq(decodedMessage.sourceProperties);
+        expect(kinesisBridgeEnvelope.targetNameLength).to.be.eq(decodedMessage.targetNameLength);
+        expect(kinesisBridgeEnvelope.targetName).to.be.eq(decodedMessage.targetName);
+        //expect(kinesisBridgeEnvelope.targetPropertiesLength).to.be.eq(decodedMessage.targetPropertiesLength);
+        expect(kinesisBridgeEnvelope.targetProperties).to.be.eq(decodedMessage.targetProperties);
+        expect(kinesisBridgeEnvelope.contentLength).to.be.eq(decodedMessage.contentLength);
     });
 });
