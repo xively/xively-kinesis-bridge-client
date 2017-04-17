@@ -50,7 +50,7 @@ const createEnvelope = () : KinesisBridgeEnvelope => {
 
     return kinesisBridgeEnvelope;
 
-}
+};
 
 describe('KinesisEnvelopeEncoder', () => {
 
