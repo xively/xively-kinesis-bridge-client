@@ -15,16 +15,16 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "babel-runtime": "^6.9.2",
-    "node-uuid": "^1.4.7"
+    "babel-runtime": "6.9.2",
+    "node-uuid": "1.4.7"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
+    "chai": "3.5.0",
     "gulp": "3.9.1",
-    "sinon": "^1.17.4",
-    "sinon-chai": "^2.8.0",
-    "patch-version": "^0.1.1",
-    "urbanjs-tools": "^0.8.5-beta"
+    "sinon": "1.17.4",
+    "sinon-chai": "2.8.0",
+    "patch-version": "0.1.1",
+    "urbanjs-tools": "0.8.5-beta"
   },
   "typings": "dist/index.d.ts"
 }

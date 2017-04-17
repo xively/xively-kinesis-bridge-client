@@ -14,11 +14,12 @@ tools.initialize(gulp, {
 
   nsp: true,
 
-  mocha: true,
+   mocha: true,
 
   retire: true,
 
   tslint: true
 });
+
 
 gulp.task('default', ['tslint', 'mocha']);

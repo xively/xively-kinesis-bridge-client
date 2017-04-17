@@ -8,6 +8,7 @@ const expect = chai.expect;
 chai.use(sinonChai);
 
 describe('KinesisEnvelopeParser', () => {
+
     it('should have a parseData function exported', () => {
         const parser = new KinesisBridgeEnvelopeParser();
         expect(parser.parseData).to.be.a.function;
