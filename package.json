@@ -2,7 +2,7 @@
   "name": "xively-kinesis-bridge",
   "version": "0.0.1",
   "main": "dist/index.js",
-  "author": "Xively-Sales-Fury <Xively-Sales-Fury@logmein.com>",
+  "author": "Xively-Sales-Fury",
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
